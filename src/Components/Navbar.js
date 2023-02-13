@@ -1,19 +1,20 @@
 import { Button } from "@mui/material";
-const Navbar = ({navigate, AppStates,loggedIn,logout}) => {
+import {Link} from 'react-router-dom'
+const Navbar = ({loggedIn,logout}) => {
     return ( 
         <nav className="navbar">
             <h2>Collaborative Cuisine</h2>
             <div className="buttons">
-                <Button variant="contained" onClick={()=>navigate(AppStates.Reddit)}>Reddit</Button>
-                <Button variant="contained" onClick={()=>navigate(AppStates.Family)}>Family</Button>
-                <Button variant="contained" onClick={()=>navigate(AppStates.InviteFamily)}>Invite Family</Button>
-                <Button variant="contained" onClick={()=>navigate(AppStates.Recipes)}>Recipe's</Button>
-                <Button variant="contained" onClick={()=>navigate(AppStates.CreateRecipeForm)}>Create Recipe</Button>
-                <Button variant="contained" onClick={()=>navigate(AppStates.Pantry)}>Pantry</Button>
-                <Button variant="contained" onClick={()=>navigate(AppStates.CreateItemForm)}>Create Item</Button>
-                <Button variant="contained" onClick={()=>navigate(AppStates.Register)}>Register</Button>
-                {loggedIn && <Button variant="contained" onClick={()=>navigate(AppStates.Logout)}>Log Out</Button>}
-                <Button variant="contained" onClick={()=>navigate(AppStates.Login)}>Log In</Button>
+                <Link to="/reddit"><Button variant="contained" >Reddit</Button></Link>
+                {loggedIn &&<Link to="/family"><Button variant="contained"  >Family</Button></Link>}
+                {loggedIn &&<Link to="/invite-family"><Button variant="contained" >Invite Family</Button></Link>}
+                {loggedIn &&<Link to="/recipes"><Button variant="contained">Recipe's</Button></Link>}
+                {loggedIn &&<Link to="/create-recipe"><Button variant="contained" >Create Recipe</Button></Link>}
+                {loggedIn &&<Link to="/panty"><Button variant="contained">Pantry</Button></Link>}
+                {loggedIn &&<Link to="/create-item"><Button variant="contained">Create Item</Button></Link>}
+                {loggedIn &&<Button variant="contained" onClick={logout}>Log Out</Button>}
+                {!loggedIn &&<Link to="/log-in"><Button variant={"contained"}>Log In</Button></Link>}
+                {!loggedIn &&<Link to="/Register"><Button variant="contained" >Register</Button></Link>}
             </div>
         </nav>
     );
