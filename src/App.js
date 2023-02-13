@@ -14,7 +14,7 @@ import Reddit from './Components/Reddit';
 import Login from './Components/Login';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true)
+  const [loggedIn, setLoggedIn] = useState(false)
   const logOut = () => {
     //logout logic
   }
@@ -24,7 +24,7 @@ function App() {
         <Navbar logOut={logOut} loggedIn={loggedIn}/>
         <Switch>
           <Route exact path='/' >
-            <Reddit/>
+            <Login/>
           </Route>
           <Route exact path='/register' >
             <Register/>
@@ -58,6 +58,11 @@ function App() {
           </Route>
           <Route exact path='/login' >
             <Login/>
+          </Route>
+          <Route path='*' >
+            <div>
+              <h1>404</h1>
+            </div>
           </Route>
         </Switch>
       </div>
